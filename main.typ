@@ -52,11 +52,22 @@ I worked on game development using Java and Processing. I also worked briefly as
 
 == 2022 - 2025
 
-I became interested in web application and compiler development. I wrote compilers for Wiring, JVM, and other platforms, as well as interpreters. I worked on various programming languages. My most popular projects were: #link("https://github.com/ixionlang/ixion", "Ixion"), #link("https://github.com/k1ngmang/lazurite", "Lazurite").
+
+
+I became interested in web application and compiler development. I wrote compilers for Wiring, JVM, and other platforms, as well as interpreters. I worked on various programming languages. My most popular projects were: 
+#text(rgb("#0074d9"))[
+  #link("https://github.com/ixionlang/ixion", "Ixion"),
+  #link("https://github.com/k1ngmang/lazurite", "Lazurite")
+]
+
+
+
 
 I began to shift from game development to engine development.
 I completed projects developing mobile apps and other services.
 
-== 2025
+In the summer of 2025, I started switching from Java to Go for backend development.
+
+== 2025 - 2026
 
 I remain interested in programming language development and am actively studying languages ​​that interest me (for example, Gleam, D, Neva, Elixir).
