@@ -11,13 +11,11 @@
   leading: 0.52em,
 )
 
-
 #show title: set text(size: 22pt)
 
 #title[
   Curriculum Vitae
 ]
-
 
 #grid(
   columns: (0fr, 1fr),
@@ -33,13 +31,32 @@
   ]
 )
 
-
 == About
 
-Hi! My name is Artyom. I'm a backend developer from Belarus. I'm also interested in compiler development.
+#grid(
+  columns: (1fr, 2fr),
+  gutter: 1cm,
+  [
+    #image("me.jpg", width: 100%, alt: "My photo")
+  ],
+  [
+    Hi! My name is Artyom. I'm a backend developer from Belarus. I'm also interested in compiler development.
 
-Languages: Go, Java, Kotlin, Scala
+    #v(0.5em)
 
+    *Technologies I use:*
+
+    #v(0.3em)
+
+    #box(image("icons/languages.svg", width: 4cm))
+    #v(0.3em)
+
+    #box(image("icons/stack.svg", width: 6cm))
+    #v(0.3em)
+
+    #box(image("icons/tools.svg", width: 6cm))
+  ]
+)
 
 == 2018 - 2020
 
@@ -52,16 +69,11 @@ I worked on game development using Java and Processing. I also worked briefly as
 
 == 2022 - 2025
 
-
-
-I became interested in web application and compiler development. I wrote compilers for Wiring, JVM, and other platforms, as well as interpreters. I worked on various programming languages. My most popular projects were: 
+I became interested in web application and compiler development. I wrote compilers for Wiring, JVM, and other platforms, as well as interpreters. I worked on various programming languages. My most popular projects were:
 #text(rgb("#0074d9"))[
   #link("https://github.com/ixionlang/ixion", "Ixion"),
   #link("https://github.com/k1ngmang/lazurite", "Lazurite")
 ]
-
-
-
 
 I began to shift from game development to engine development.
 I completed projects developing mobile apps and other services.
@@ -70,4 +82,4 @@ In the summer of 2025, I started switching from Java to Go for backend developme
 
 == 2025 - 2026
 
-I remain interested in programming language development and am actively studying languages ​​that interest me (for example, Gleam, D, Neva, Elixir).
+I remain interested in programming language development and am actively studying languages that interest me (for example, Gleam, D, Neva, Elixir).
