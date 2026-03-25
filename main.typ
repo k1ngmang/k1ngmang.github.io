@@ -42,18 +42,12 @@
   [
     Hi! My name is Artyom. I'm a backend developer from Belarus. I'm also interested in compiler development.
 
-    #v(0.5em)
+    *Stuff I use:*
 
-    *Technologies I use:*
-
-    #v(0.3em)
+    #v(0.2em)
 
     #box(image("icons/languages.svg", width: 4cm))
-    #v(0.3em)
-
     #box(image("icons/stack.svg", width: 6cm))
-    #v(0.3em)
-
     #box(image("icons/tools.svg", width: 6cm))
   ]
 )
