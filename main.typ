@@ -20,14 +20,22 @@
 #grid(
   columns: (0fr, 1fr),
   align(left)[
-    #link("https://github.com/k1ngmang")[
-      #image("github.png", width: 1em)
-    ]
-  ],
-  align(right)[
-   #link("https://kwork.ru/user/k1ngmang")[
-      #image("kowrk.png", width: 1em)
-    ]
+    #stack(
+      dir: ltr,
+      spacing: 1.5em,
+
+      link("https://github.com/k1ngmang")[
+        #image("icons/github.png", width: 1em)
+      ],
+
+      link("https://t.me/k1ngmang")[
+        #image("icons/telegram.png", width: 1em)
+      ],
+
+      link("https://www.linkedin.com/in/k1ngmang")[
+        #image("icons/linkedin.png", width: 1em)
+      ]
+    )
   ]
 )
 
@@ -37,7 +45,7 @@
   columns: (1fr, 2fr),
   gutter: 1cm,
   [
-    #image("me.jpg", width: 100%, alt: "My photo")
+    #image("icons/me.jpg", width: 100%, alt: "My photo")
   ],
   [
     Hi! My name is Artyom. I'm a backend developer from Belarus. I'm also interested in compiler development.
