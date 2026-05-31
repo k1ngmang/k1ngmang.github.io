@@ -80,15 +80,14 @@ other projects on this topic:
 
 === algorithms & engines
 
-For some time, I was a maintainer in the
+For some time, I was a maintainer in
 #link("https://github.com/TheAlgorithms", text(rgb("#3446eb"))[TheAlgorithms])
 community (algorithms in Kotlin), and also created a
 #link("https://github.com/dlangalgorithms/algorithms", text(rgb("#3446eb"))[repository])
 for implementing the most popular algorithms in Dlang.
 
 Among the latest projects related to rendering engines:
-#link("https://github.com/k1ngmang/zont", text(rgb("#3446eb"))[Zont]) \
-- an engine written in Go, which is capable of rendering 3D models in the console
+#link("https://github.com/k1ngmang/zont", text(rgb("#3446eb"))[Zont]) - an engine written in Go, which is capable of rendering 3D models in the console
 
 == 2018 - 2020
 
