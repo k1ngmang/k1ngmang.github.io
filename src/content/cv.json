@@ -1,0 +1,79 @@
+{
+  "title": "Curriculum Vitae",
+  "subtitle": "Minimalist CV site in Elm, focused on content, readability, and a clean black-on-white presentation.",
+  "contacts": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/k1ngmang"
+    },
+    {
+      "label": "Telegram",
+      "url": "https://t.me/k1ngmang"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/k1ngmang"
+    }
+  ],
+  "about": [
+    {
+      "label": "Languages",
+      "value": "Java, Go, Kotlin, Processing, D, Gleam"
+    },
+    {
+      "label": "Stack",
+      "value": "Gin, Gorm, PostgreSQL, Kafka, Redis, p5js, Ktor"
+    }
+  ],
+  "projects": [
+    {
+      "title": "Compilers",
+      "items": [
+        {
+          "type": "link",
+          "label": "the Ixion programming language",
+          "url": "https://github.com/ixionlang/ixion"
+        },
+        {
+          "type": "text",
+          "value": "Ixion is a statically typed language with algebraic data types that targets JVM bytecode. I implemented the parser, type system, and code generation."
+        },
+        {
+          "type": "text",
+          "value": "Other related work includes Neva and Lazurite, plus compiler tooling such as Tulang, Lino, and Jasgo."
+        }
+      ]
+    },
+    {
+      "title": "Algorithms and Engines",
+      "items": [
+        {
+          "type": "text",
+          "value": "I was a maintainer in TheAlgorithms community for Kotlin and built a repository for popular algorithms in D."
+        },
+        {
+          "type": "text",
+          "value": "Recent rendering work includes Zont, a Go engine capable of rendering 3D models in the console."
+        }
+      ]
+    }
+  ],
+  "timeline": [
+    {
+      "period": "2018 - 2020",
+      "body": "Started programming on Scratch at age 10, participated in events, and won prizes."
+    },
+    {
+      "period": "2020 - 2022",
+      "body": "Moved to Java, worked with game development and Processing, and briefly worked as a game developer."
+    },
+    {
+      "period": "2022 - 2025",
+      "body": "Focused on web applications, compilers, interpreters, and languages. Moved gradually from game development to engine development."
+    },
+    {
+      "period": "2025 - 2026",
+      "body": "Continued studying languages and systems that interest me, including Gleam, D, Neva, and Elixir."
+    }
+  ]
+}
