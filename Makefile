@@ -3,7 +3,7 @@ TYPST=typst
 
 ELM_ENTRY=src/Main.elm
 
-TYPST_ENTRY=src/main.typ
+TYPST_ENTRY=main.typ
 TYPST_OUTPUT=result/main.pdf
 
 .PHONY: all site pdf clean

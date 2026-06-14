@@ -1,4 +1,4 @@
-module Content exposing (AboutEntry, ContactLink, Project, ProjectItem(..), Resume, TimelineEntry, resume)
+module Content exposing (AboutEntry, ContactLink, Inline(..), Paragraph, Project, ProjectBlock(..), ProjectItem(..), Resume, TimelineEntry, resume)
 
 
 type alias Resume =
@@ -25,8 +25,22 @@ type alias AboutEntry =
 
 type alias Project =
     { title : String
-    , items : List ProjectItem
+    , items : List ProjectBlock
     }
+
+
+type alias Paragraph =
+    List Inline
+
+
+type Inline
+    = Plain String
+    | Link String String
+
+
+type ProjectBlock
+    = ProjectParagraph Paragraph
+    | ProjectItems (List ProjectItem)
 
 
 type ProjectItem
@@ -42,36 +56,73 @@ type alias TimelineEntry =
 
 resume : Resume
 resume =
-    { title = "Curriculum Vitae"
-    , subtitle = "Minimalist CV site."
+    { title = "Резюме"
+    , subtitle = ""
     , contacts =
         [ { label = "GitHub", url = "https://github.com/k1ngmang" }
         , { label = "Telegram", url = "https://t.me/k1ngmang" }
         , { label = "LinkedIn", url = "https://www.linkedin.com/in/k1ngmang" }
         ]
     , about =
-        [ { label = "Languages", value = "Java, Go, Kotlin, Processing, D, Gleam" }
-        , { label = "Stack", value = "Gin, Gorm, PostgreSQL, Kafka, Redis, p5js, Ktor" }
+        [ { label = "Языки", value = "Java, Go, Kotlin, Processing" }
+        , { label = "Стек", value = "Spring, Gin, Hibernate, Gorm, PostgreSQL, Kafka, Redis, p5js" }
         ]
     , projects =
-        [ { title = "Compilers"
+        [ { title = "компиляторы"
           , items =
-                [ ProjectLink "the Ixion programming language" "https://github.com/ixionlang/ixion"
-                , ProjectText "Ixion is a statically typed language with algebraic data types that targets JVM bytecode. I implemented the parser, type system, and code generation."
-                , ProjectText "Other related work includes Neva and Lazurite, plus compiler tooling such as Tulang, Lino, and Jasgo."
+                [ ProjectParagraph
+                    [ Link "язык программирования Ixion" "https://github.com/ixionlang/ixion"
+                    ]
+                , ProjectParagraph
+                    [ Plain "Ixion - это статически типизированный язык с алгебраическими типами данных → байткод JVM." ]
+                , ProjectParagraph
+                    [ Plain "Реализовал парсер, систему типов, оптимизации и генерацию кода." ]
+                , ProjectParagraph
+                    [ Plain "Синтаксис: Scala + Go." ]
+                , ProjectParagraph
+                    [ Plain "Отказ от ООП в пользу мощной системы типов позволил создать" ]
+                , ProjectParagraph
+                    [ Plain "удобный и безопасный язык, сохранив возможности платформы." ]
+                , ProjectParagraph
+                    [ Plain "Помимо Ixion, я участвовал и в других проектах (например, "
+                    , Link "Neva" "https://github.com/nevalang/neva"
+                    , Plain "), а один из моих языков ("
+                    , Link "Lazurite" "https://github.com/k1ngmang/lazurite"
+                    , Plain ") был добавлен на платформу Gitflic."
+                    ]
+                , ProjectParagraph
+                    [ Plain "Другие проекты на эту тему:" ]
+                , ProjectItems
+                    [ ProjectLink "tulang" "https://github.com/kngmng/tulang"
+                    , ProjectText "(компилятор в JVM, 50 звёзд на GitHub)"
+                    , ProjectLink "lino" "https://github.com/kngmng/lino"
+                    , ProjectText "(компилятор в Wiring, 33 звезды на GitHub)"
+                    , ProjectLink "jasgo" "https://github.com/k1ngmang/jasgo"
+                    , ProjectText "(типобезопасная библиотека для написания backend'а компилятора для JVM, 18 звёзд на GitHub)"
+                    ]
                 ]
           }
-        , { title = "Algorithms and Engines"
+        , { title = "алгоритмы и движки"
           , items =
-                [ ProjectText "I was a maintainer in TheAlgorithms community for Kotlin and built a repository for popular algorithms in D."
-                , ProjectText "Recent rendering work includes Zont, a Go engine capable of rendering 3D models in the console."
+                [ProjectParagraph
+                    [ Plain "Некоторое время я был мейнтейнером в "
+                    , Link "TheAlgorithms" "https://github.com/TheAlgorithms"
+                    , Plain " (алгоритмы на Kotlin), а также сделал "
+                    , Link "репозиторий" "https://github.com/dlangalgorithms/algorithms"
+                    , Plain " для реализации самых алгоритмов на Dlang."
+                    ]
+                , ProjectParagraph
+                    [ Plain "Из последних проектов, связанных с движками: "
+                    , Link "Zont" "https://github.com/k1ngmang/zont"
+                    , Plain " - движок на Go, способный рендерить 3D-модели в консоли"
+                    ]
                 ]
           }
         ]
     , timeline =
-        [ { period = "2018 - 2020", body = "Started programming on Scratch at age 10, participated in events, and won prizes." }
-        , { period = "2020 - 2022", body = "Moved to Java, worked with game development and Processing, and briefly worked as a game developer." }
-        , { period = "2022 - 2025", body = "Focused on web applications, compilers, interpreters, and languages. Moved gradually from game development to engine development." }
-        , { period = "2025 - 2026", body = "Continued studying languages and systems that interest me, including Gleam, D, Neva, and Elixir." }
+        [ { period = "2018 - 2020", body = "Я начал программировать на Scratch в возрасте 10 лет. Участвовал в разных мероприятиях и выигрывал призы." }
+        , { period = "2020 - 2022", body = "Перешёл на Java, но всё ещё интересовался разработкой игр, поэтому занимался их разработкой на Java и Processing. Также некоторое время работал разработчиком игр." }
+        , { period = "2022 - 2025", body = "Меня заинтересовала разработка веб-приложений и компиляторов. Я писал интерпретаторы и компиляторы под Wiring, JVM и другие платформы. Работал над различными языками программирования. Мои самые популярные проекты: Ixion, Lazurite" }
+        , { period = "2025 - 2026", body = "Я по-прежнему интересуюсь разработкой языков программирования и активно изучаю интересующие меня языки (например, Gleam, D, Neva, Elixir)." }
         ]
     }

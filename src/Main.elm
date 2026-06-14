@@ -1,7 +1,7 @@
 module Main exposing (main)
 
 import Browser
-import Content exposing (ProjectItem(..), resume)
+import Content exposing (Inline(..), ProjectBlock(..), ProjectItem(..), resume)
 import Html exposing (Html, a, div, h1, h2, p, text)
 import Html.Attributes exposing (href, rel, style, target)
 
@@ -20,7 +20,7 @@ main =
         { init = \_ -> ( (), Cmd.none )
         , update = \_ model -> ( model, Cmd.none )
         , subscriptions = \_ -> Sub.none
-        , view = \_ -> { title = "Curriculum Vitae", body = [ viewPage ] }
+        , view = \_ -> { title = resume.title, body = [ viewPage ] }
         }
 
 
@@ -39,9 +39,9 @@ viewPage =
             , style "margin" "0 auto"
             ]
             [ headerBlock
-            , sectionBlock "About" [ twoColumn resume.about ]
-            , sectionBlock "Projects" (List.map viewProject resume.projects)
-            , sectionBlock "Timeline" (List.map viewTimeline resume.timeline)
+            , sectionBlock "О себе" [ twoColumn resume.about ]
+            , sectionBlock "Проекты" (List.map viewProject resume.projects)
+            , sectionBlock "Хронология" (List.map viewTimeline resume.timeline)
             ]
         ]
 
@@ -59,14 +59,7 @@ headerBlock =
             , style "font-weight" "600"
             , style "letter-spacing" "-0.04em"
             ]
-            [ text "Curriculum Vitae" ]
-        , p
-            [ style "margin" "0"
-            , style "max-width" "56ch"
-            , style "font-size" "1.05rem"
-            , style "color" "#333333"
-            ]
-            [ text resume.subtitle ]
+            [ text resume.title ]
         , div [ style "margin-top" "18px", style "display" "flex", style "gap" "14px", style "flex-wrap" "wrap" ]
             (List.map (\contact -> contactLink contact.label contact.url) resume.contacts)
         ]
@@ -111,18 +104,54 @@ viewProject : Content.Project -> Html Msg
 viewProject project =
     div [ style "margin-bottom" "22px" ]
         [ h2 [ style "margin" "0 0 8px", style "font-size" "1.25rem", style "font-weight" "600" ] [ text project.title ]
-        , div [ style "max-width" "72ch" ] (List.map viewProjectItem project.items)
+        , div [ style "max-width" "72ch" ] (List.map viewProjectBlock project.items)
         ]
+
+
+viewProjectBlock : Content.ProjectBlock -> Html Msg
+viewProjectBlock block =
+    case block of
+        ProjectParagraph paragraph ->
+            p [ style "margin" "0 0 10px", style "color" "#222222" ] (List.map viewInline paragraph)
+
+        ProjectItems items ->
+            div [ style "margin" "0 0 10px" ] (List.map viewProjectItem items)
+
+
+viewInline : Content.Inline -> Html Msg
+viewInline inline =
+    case inline of
+        Plain body ->
+            text body
+
+        Link label url_ ->
+            a
+                [ href url_
+                , target "_blank"
+                , rel "noreferrer"
+                , style "color" "#3446eb"
+                , style "text-decoration" "underline"
+                ]
+                [ text label ]
 
 
 viewProjectItem : Content.ProjectItem -> Html Msg
 viewProjectItem item =
     case item of
         ProjectLink label url_ ->
-            linked label url_
+            div [ style "margin-bottom" "6px" ]
+                [ a
+                    [ href url_
+                    , target "_blank"
+                    , rel "noreferrer"
+                    , style "color" "#3446eb"
+                    , style "text-decoration" "underline"
+                    ]
+                    [ text label ]
+                ]
 
         ProjectText body ->
-            textParagraph body
+            p [ style "margin" "0 0 6px", style "color" "#222222" ] [ text body ]
 
 
 viewTimeline : Content.TimelineEntry -> Html Msg
@@ -145,20 +174,3 @@ contactLink label url_ =
         , style "padding-bottom" "2px"
         ]
         [ text label ]
-
-
-linked : String -> String -> Html Msg
-linked label url_ =
-    a
-        [ href url_
-        , target "_blank"
-        , rel "noreferrer"
-        , style "color" "#111111"
-        , style "text-decoration" "underline"
-        ]
-        [ text label ]
-
-
-textParagraph : String -> Html Msg
-textParagraph content =
-    p [ style "margin" "0 0 10px", style "color" "#222222", style "max-width" "72ch" ] [ text content ]
