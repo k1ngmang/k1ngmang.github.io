@@ -2,7 +2,7 @@ module Main exposing (main)
 
 import Browser
 import Content exposing (Inline(..), Paragraph, bio)
-import Html exposing (Html, a, div, h1, h2, h3, p, text)
+import Html exposing (Html, a, div, h1, h2, h3, li, p, text, ul)
 import Html.Attributes exposing (class, href, id, rel, style, target)
 
 
@@ -63,20 +63,22 @@ headerBlock =
             [ text bio.title ]
         , div [ style "display" "flex", style "gap" "20px", style "flex-wrap" "wrap" ]
             (List.map (\contact -> contactLink contact.label contact.url) bio.contacts)
-        , navButtons
+        , projectsLink
         ]
 
 
-navButtons : Html Msg
-navButtons =
+projectsLink : Html Msg
+projectsLink =
     div
-        [ style "display" "flex"
-        , style "gap" "12px"
-        , style "margin-top" "24px"
-        , style "flex-wrap" "wrap"
-        ]
-        [ a [ href "#history", class "btn" ] [ text "[ История ]" ]
-        , a [ href "#projects", class "btn" ] [ text "[ Проекты ]" ]
+        [ style "margin-top" "24px" ]
+        [ a
+            [ href "#projects"
+            , style "color" "#111111"
+            , style "font-family" "'IBM Plex Mono', monospace"
+            , style "font-size" "0.9rem"
+            , style "text-decoration" "none"
+            ]
+            [ text "[ Проекты ]" ]
         ]
 
 
@@ -142,25 +144,18 @@ viewParagraph paragraph =
 
 viewProjects : List Content.Project -> Html Msg
 viewProjects projects =
-    div
-        [ style "display" "grid"
-        , style "grid-template-columns" "repeat(auto-fit, minmax(280px, 1fr))"
-        , style "gap" "18px"
+    ul
+        [ style "list-style" "none"
+        , style "margin" "0"
+        , style "padding" "0"
+        , style "border-top" "1px solid #e5e5e5"
         ]
         (List.map viewProject projects)
 
 
 viewProject : Content.Project -> Html Msg
 viewProject project =
-    div
-        [ style "border" "1px solid #e5e5e5"
-        , style "border-radius" "10px"
-        , style "padding" "24px"
-        , style "display" "flex"
-        , style "flex-direction" "column"
-        , style "justify-content" "space-between"
-        , style "gap" "14px"
-        ]
+    li [ class "project-row" ]
         [ div []
             [ h3 [ style "margin" "0 0 8px", style "font-size" "1.1rem", style "font-weight" "600" ]
                 [ text project.title ]
@@ -172,7 +167,6 @@ viewProject project =
             , target "_blank"
             , rel "noreferrer"
             , class "btn"
-            , style "align-self" "flex-start"
             ]
             [ text "[ Перейти ]" ]
         ]

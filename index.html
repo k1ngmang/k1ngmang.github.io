@@ -11,6 +11,26 @@
     html { scroll-behavior: smooth; }
     body { padding: 0; margin: 0; }
 
+    .project-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 24px 0;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .project-row > div { min-width: 0; }
+    .project-row > .btn { flex-shrink: 0; }
+
+    @media (max-width: 520px) {
+      .project-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+    }
+
     .btn {
       display: inline-block;
       background: #111111;
@@ -5421,15 +5441,11 @@ var $author$project$Main$footerBlock = A2(
 				$author$project$Content$bio.contacts))
 		]));
 var $elm$html$Html$h1 = _VirtualDom_node('h1');
-var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
-var $author$project$Main$navButtons = A2(
+var $author$project$Main$projectsLink = A2(
 	$elm$html$Html$div,
 	_List_fromArray(
 		[
-			A2($elm$html$Html$Attributes$style, 'display', 'flex'),
-			A2($elm$html$Html$Attributes$style, 'gap', '12px'),
-			A2($elm$html$Html$Attributes$style, 'margin-top', '24px'),
-			A2($elm$html$Html$Attributes$style, 'flex-wrap', 'wrap')
+			A2($elm$html$Html$Attributes$style, 'margin-top', '24px')
 		]),
 	_List_fromArray(
 		[
@@ -5437,19 +5453,11 @@ var $author$project$Main$navButtons = A2(
 			$elm$html$Html$a,
 			_List_fromArray(
 				[
-					$elm$html$Html$Attributes$href('#history'),
-					$elm$html$Html$Attributes$class('btn')
-				]),
-			_List_fromArray(
-				[
-					$elm$html$Html$text('[ История ]')
-				])),
-			A2(
-			$elm$html$Html$a,
-			_List_fromArray(
-				[
 					$elm$html$Html$Attributes$href('#projects'),
-					$elm$html$Html$Attributes$class('btn')
+					A2($elm$html$Html$Attributes$style, 'color', '#111111'),
+					A2($elm$html$Html$Attributes$style, 'font-family', '\'IBM Plex Mono\', monospace'),
+					A2($elm$html$Html$Attributes$style, 'font-size', '0.9rem'),
+					A2($elm$html$Html$Attributes$style, 'text-decoration', 'none')
 				]),
 			_List_fromArray(
 				[
@@ -5493,7 +5501,7 @@ var $author$project$Main$headerBlock = A2(
 					return A2($author$project$Main$contactLink, contact.label, contact.url);
 				},
 				$author$project$Content$bio.contacts)),
-			$author$project$Main$navButtons
+			$author$project$Main$projectsLink
 		]));
 var $elm$html$Html$p = _VirtualDom_node('p');
 var $author$project$Main$viewInline = function (inline) {
@@ -5623,18 +5631,15 @@ var $author$project$Main$viewChapter = function (chapter) {
 					]))
 			]));
 };
+var $elm$html$Html$ul = _VirtualDom_node('ul');
+var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
+var $elm$html$Html$li = _VirtualDom_node('li');
 var $author$project$Main$viewProject = function (project) {
 	return A2(
-		$elm$html$Html$div,
+		$elm$html$Html$li,
 		_List_fromArray(
 			[
-				A2($elm$html$Html$Attributes$style, 'border', '1px solid #e5e5e5'),
-				A2($elm$html$Html$Attributes$style, 'border-radius', '10px'),
-				A2($elm$html$Html$Attributes$style, 'padding', '24px'),
-				A2($elm$html$Html$Attributes$style, 'display', 'flex'),
-				A2($elm$html$Html$Attributes$style, 'flex-direction', 'column'),
-				A2($elm$html$Html$Attributes$style, 'justify-content', 'space-between'),
-				A2($elm$html$Html$Attributes$style, 'gap', '14px')
+				$elm$html$Html$Attributes$class('project-row')
 			]),
 		_List_fromArray(
 			[
@@ -5675,8 +5680,7 @@ var $author$project$Main$viewProject = function (project) {
 						$elm$html$Html$Attributes$href(project.url),
 						$elm$html$Html$Attributes$target('_blank'),
 						$elm$html$Html$Attributes$rel('noreferrer'),
-						$elm$html$Html$Attributes$class('btn'),
-						A2($elm$html$Html$Attributes$style, 'align-self', 'flex-start')
+						$elm$html$Html$Attributes$class('btn')
 					]),
 				_List_fromArray(
 					[
@@ -5686,12 +5690,13 @@ var $author$project$Main$viewProject = function (project) {
 };
 var $author$project$Main$viewProjects = function (projects) {
 	return A2(
-		$elm$html$Html$div,
+		$elm$html$Html$ul,
 		_List_fromArray(
 			[
-				A2($elm$html$Html$Attributes$style, 'display', 'grid'),
-				A2($elm$html$Html$Attributes$style, 'grid-template-columns', 'repeat(auto-fit, minmax(280px, 1fr))'),
-				A2($elm$html$Html$Attributes$style, 'gap', '18px')
+				A2($elm$html$Html$Attributes$style, 'list-style', 'none'),
+				A2($elm$html$Html$Attributes$style, 'margin', '0'),
+				A2($elm$html$Html$Attributes$style, 'padding', '0'),
+				A2($elm$html$Html$Attributes$style, 'border-top', '1px solid #e5e5e5')
 			]),
 		A2($elm$core$List$map, $author$project$Main$viewProject, projects));
 };

@@ -11,6 +11,26 @@
     html { scroll-behavior: smooth; }
     body { padding: 0; margin: 0; }
 
+    .project-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 24px 0;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .project-row > div { min-width: 0; }
+    .project-row > .btn { flex-shrink: 0; }
+
+    @media (max-width: 520px) {
+      .project-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+    }
+
     .btn {
       display: inline-block;
       background: #111111;
